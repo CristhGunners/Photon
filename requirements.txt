@@ -1,0 +1,4 @@
+Django==1.7.5
+Pillow==2.7.0
+django-taggit==0.12.2
+easy-thumbnails==2.2
