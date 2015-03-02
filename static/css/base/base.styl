@@ -58,32 +58,17 @@ body
 	margin 0
 	
 	header
-		background #323232
+		background transparent
 		margin 0
 		padding 1em 0
 		position absolute
 		top 0
 		width 100%
+		min-width 300px
 		z-index 9999
-		color white
-		
-		&.transparent
-			background transparent
-			
-			a
-				color white
-		
-		h1
-			color white
-			margin 0
-			padding 0
-			float left
-			margin-left 1em
-			font-size 1.25em
-			
-			a
-				color white
-				text-decoration none
+		color lead
+		border-bottom 1px solid clearlead
+		//box-shadow -19px 27px 133px -4px rgba(0,0,0,0.96)
 		
 		nav
 			display inline-block
@@ -98,14 +83,14 @@ body
 				margin-right 1em
 								
 			a
-				color white
+				color lead
 				text-decoration none
 				font-size 1.25em
-				
-				&.logo
-					color white
-					padding 0.5em 0.65em
-					font-weight 900
+				margin 0 0.5em
+				transition all 0.5s
+
+				&:hover
+					opacity 0.5
 				
 				span
 					vertical-align middle
@@ -115,7 +100,7 @@ body
 		padding 0
 		width 100%
 		position relative
-		padding 5em 0 2em
+		padding 3.55em 0 0
 			
 		div.empty
 			text-align center
@@ -129,22 +114,28 @@ body
 	
 	footer
 		background transparent
-		padding 1em
+		padding 0
 		margin 0 auto
+		border-top 1px solid clearlead
 		
 		ul
 			list-style none
 			text-align center
 			padding 0
 			display block
+			margin 0
 			
 			li
 				font-size 1em
 				display inline-block
 				vertical-align middle
-				margin 0.5em
+				margin 1em
+				padding 0
+				float right
+				margin-right 2em
+				color lead
 				
 				a
-					color gray
+					color lead
 					text-decoration none
 			

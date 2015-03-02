@@ -12,16 +12,33 @@
 
 {% block content %}
     <section class="home">
-        <span class="icon-stack"></span>
-        <h4>Comparte Imagenes del Mundo</h4>
-        <nav class="filter">
-            <a href="">Recientes</a>
-            <a href="">Populares</a>
-        </nav>
-        <section class="list-photo">
-            <figure>
-                <img src="" alt="">
-            </figure>
+        <section class="grid-photo">
+            <div class="photo">
+                <div class="background" style="background-image:url('https://unsplash.imgix.net/reserve/jEs6K0y1SbK3DAvgrBe5_IMG_3410.jpg?fit=crop&fm=jpg&h=1400&q=75&w=1050');"></div>
+                <div class="user-info">
+                    <figure class="user">
+                        <img src="https://yt3.ggpht.com/-4iS0hNz9huE/AAAAAAAAAAI/AAAAAAAAAAA/T19zkowQ4ZA/s88-c-k-no/photo.jpg" alt="">
+                    </figure>
+                    <h2>Cristhofer Andana</h2>
+                </div>
+                <div class="photo-info">
+                    <time><span class="icon-clock"></span> Hace 2 Horas</time>
+                </div>
+                <a href="" class="download"><span class="icon-cloud-download"></span></a>
+            </div>
+            <div class="photo">
+                <div class="background" style="background-image:url('https://unsplash.imgix.net/photo-1418065460487-3e41a6c84dc5?fit=crop&fm=jpg&h=700&q=75&w=1050');"></div>
+                <div class="user-info">
+                    <figure class="user">
+                        <img src="https://yt3.ggpht.com/-4iS0hNz9huE/AAAAAAAAAAI/AAAAAAAAAAA/T19zkowQ4ZA/s88-c-k-no/photo.jpg" alt="">
+                    </figure>
+                    <h2>Cristhofer Andana</h2>
+                </div>
+                <div class="photo-info">
+                    <time><span class="icon-clock"></span> Hace 2 Horas</time>
+                </div>
+                <a href="" class="download"><span class="icon-cloud-download"></span></a>
+            </div>
         </section>
     </section>
 {% endblock %}
