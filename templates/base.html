@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:site_name" content="Photon" />
+    <title> {% block title %}{% endblock %} </title>
+    <link rel="shortcut icon" href="{% static "images/logo.ico" %}">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300'>
+    <link rel='stylesheet' href='{% static "css/icomoon/style.css" %}'>
+    <link rel="stylesheet" type="text/css" href="{% static "css/vendor/jquery.dropdown.css" %}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav class="left">
+            <a href=""><span class="icon-stack"></span></a>
+        </nav>
+        <h1><a href="">Photon</a></h1>
+        <nav class="right">
+            <a href="" data-dropdown="#dropdown-filter" ><span class="icon-cog"></span></a>
+        </nav>
+    </header>
+    <section class="content">
+        {% block content %}{% endblock %}
+    </section>
+    <footer>
+        <ul>
+            <li><a href="">Nosotros</a></li>
+            <li><a href="">Terminos</a></li>
+            <li><a href="">Suscribete</a></li>
+        </ul>
+        <ul>
+            <li><a href="" target="_blank"><span class="icon-twitter"></span></a></li>
+            <li><a href="" target="_blank"><span class="icon-google-plus2"></span></a></li>
+            <li><a href="" target="_blank"><span class="icon-github2"></span></a></li>
+        </ul>
+    </footer>
+    
+    <div id="dropdown-filter" class="dropdown dropdown-tip dropdown-anchor-right">
+        <ul class="dropdown-menu">
+            <li><a href="" class=""><span class="icon-user"></span> Yo</a></li>
+            <li><a href="" class=""><span class="icon-plus"></span> Subir Imagen</a></li>
+            <li><a href="" class=""><span class="icon-cog"></span> Configuracion</a></li>
+            <li><a href="" class=""><span class="icon-exit"></span> Salir</a></li>
+        </ul>
+    </div>
+    
+
+    <script src="{% static "js/vendor/jquery-latest.js" %}"></script>
+    <script src="{% static "js/vendor/flowtype.js" %}"></script>
+    <script src="{% static "js/vendor/jquery.dropdown.js" %}"></script>
+    {% block js %}{% endblock %}
+    <script src="{% static "js/base.js" %}"></script>
+</body>
+</html>

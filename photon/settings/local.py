@@ -37,17 +37,6 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join('media')
 
-THIRD_PARTY_APPS = (
-    'debug_toolbar',
-    )
-
-INSTALLED_APPS += THIRD_PARTY_APPS
-
-# Debug Toolbar
-
-DEBUG_TOOLBAR_PATCH_SETTINGS = False
-INTERNAL_IPS = ('127.0.0.1',)
-
 MIDDLEWARE_CLASSES = (
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,13 +47,3 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379',
-        'OPTIONS': {
-            'DB': 1
-        }
-    }
-}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    Photon
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/photo/home.css" %}">
+{% endblock %}
+
+{% block content %}
+    <section class="home">
+        <span class="icon-stack"></span>
+        <h4>Comparte Imagenes del Mundo</h4>
+        <nav class="filter">
+            <a href="">Recientes</a>
+            <a href="">Populares</a>
+        </nav>
+        <section class="list-photo">
+            <figure>
+                <img src="" alt="">
+            </figure>
+        </section>
+    </section>
+{% endblock %}
