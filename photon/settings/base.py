@@ -32,9 +32,11 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'easy_thumbnails',
+    'taggit',
 )
 
 LOCAL_APPS = (
+    'photon.apps.user',
     'photon.apps.photo',
 )
 
@@ -58,7 +60,7 @@ WSGI_APPLICATION = 'photon.wsgi.application'
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-cl'
 
 TIME_ZONE = 'UTC'
 
@@ -84,3 +86,23 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
 )
+
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
+}
+
+# Auth
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
+AUTH_USER_MODEL = 'user.User'
+
+# Thumbnails Size
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (150, 150), 'crop': True},
+        'home': {'size': (720, 400), 'crop': True},
+    },
+}

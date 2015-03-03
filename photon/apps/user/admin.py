@@ -12,7 +12,7 @@ class UserAdmin(UserAdmin):
          'fields': ('first_name', 'last_name', 'email', 'avatar', 'slug')}),
         ('Permissions', {
          'fields': (
-            'is_staff', 'is_active', 'is_superuser', 'user_permissions')}),
+            'is_staff', 'is_active', 'is_superuser', 'groups', 'user_permissions')}),
     )
 
 admin.site.register(User, UserAdmin)

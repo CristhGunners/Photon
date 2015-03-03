@@ -3,28 +3,26 @@
 {% load staticfiles %}
 
 {% block title %}
-    Photon
+    {{profile.full_name}}
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static "css/photo/home.css" %}">
+    <link rel="stylesheet" href="{% static "css/user/user.css" %}">
 {% endblock %}
 
 {% block content %}
     {% load thumbnail %}
-    <section class="home">
+    <section class="user">
+        <section class="user-info">
+            <figure>
+                <img src="{{profile.avatar|thumbnail_url:'avatar'}}" alt="">
+            </figure>
+            <h2>{{profile.full_name}}</h2>
+        </section>
         <section class="grid-photo">
             {% for photo in photos %}
             <div class="photo">
                 <div class="background" style="background-image:url('{{photo.image|thumbnail_url:'home'}}');"></div>
-                <div class="user-info">
-                    <figure class="user">
-                        <a href="{{photo.user.get_absolute_url}}">
-                        <img src="{{photo.user.avatar|thumbnail_url:'avatar'}}" alt="">
-                        </a>
-                    </figure>
-                    <h2><a href="{{photo.user.get_absolute_url}}">{{photo.user.full_name}}</a></h2>
-                </div>
                 <div class="photo-info">
                     <time><span class="icon-clock"></span> {{photo.date_creation|date:"d ,F Y"}}</time>
                 </div>
@@ -50,6 +48,5 @@
             <a href="?page={{ photos.previous_page_number }}">Anterior</a>
         </li>
         {% endif %}
-        
     </ul>
 {% endblock %}

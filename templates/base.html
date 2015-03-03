@@ -15,8 +15,8 @@
 <body>
     <header>
         <nav class="left">
-            <a href=""><span class="icon-stack"></span></a>
-            <a href="">Photon</a>
+            <a href="{% url 'photo:home' %}"><span class="icon-stack"></span></a>
+            <a href="{% url 'photo:home' %}">Photon</a>
             <a href="">Tags</a>
         </nav>
         <nav class="right">
@@ -30,23 +30,16 @@
         {% block content %}{% endblock %}
     </section>
     <footer>
-        <ul>
-            <li>
-                172 Fotos
-            </li>
-            <li>
-                <a href="">Anterior</a>
-            </li>
-        </ul>
+        {% block footer %}{% endblock %}
     </footer>
     
     <div id="dropdown-filter" class="dropdown dropdown-tip dropdown-anchor-right">
         <ul class="dropdown-menu">
             {% if user.is_authenticated %}
-                <li><a href="" class=""><span class="icon-user"></span> Yo</a></li>
+                <li><a href="{{ user.get_absolute_url }}" class=""><span class="icon-user"></span> Yo</a></li>
                 <li><a href="" class=""><span class="icon-cloud-upload"></span> Subir Imagen</a></li>
                 <li><a href="" class=""><span class="icon-cog"></span> Configuracion</a></li>
-                <li><a href="" class=""><span class="icon-exit"></span> Salir</a></li>
+                <li><a href="{% url 'user:logout' %}" class=""><span class="icon-exit"></span> Salir</a></li>
             {% else %}
                 <li><a href="" class=""><span class="icon-enter"></span> Entrar</a></li>
                 <li><a href="" class=""><span class="icon-user-plus"></span> Registrarse</a></li>
