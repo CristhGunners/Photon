@@ -15,7 +15,7 @@
     <section class="home">
         <section class="grid-photo">
             {% for photo in photos %}
-            <div class="photo">
+            <div class="photo {% if not forloop.counter|divisibleby:2 and forloop.last %}full{% endif %}">
                 <div class="background" style="background-image:url('{{photo.image|thumbnail_url:'home'}}');"></div>
                 <div class="user-info">
                     <figure class="user">
@@ -36,7 +36,6 @@
 {% endblock %}
 
 {% block footer %}
-    <ul>
         <li>
             Pagina {{ photos.number }} de {{ photos.paginator.num_pages }}.
         </li>
@@ -50,6 +49,4 @@
             <a href="?page={{ photos.previous_page_number }}">Anterior</a>
         </li>
         {% endif %}
-        
-    </ul>
 {% endblock %}

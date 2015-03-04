@@ -10,6 +10,9 @@ class UserAdmin(UserAdmin):
         ('User', {'fields': ('username', 'password')}),
         ('Persona Info', {
          'fields': ('first_name', 'last_name', 'email', 'avatar', 'slug')}),
+        ('Social Networks', {
+         'fields': (
+            'facebook', 'twitter', 'googleplus', 'instagram', 'website')}),
         ('Permissions', {
          'fields': (
             'is_staff', 'is_active', 'is_superuser', 'groups', 'user_permissions')}),

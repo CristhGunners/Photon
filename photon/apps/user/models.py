@@ -37,13 +37,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=100)
     avatar = models.ImageField(upload_to='author')
     slug = models.SlugField(unique=True)
+    website = models.URLField(blank=True)
 
     # Redes Sociales
 
-    facebook = models.CharField(max_length=200, default='')
-    twitter = models.CharField(max_length=200, default='')
-    googleplus = models.CharField(max_length=200, default='')
-    instagram = models.CharField(max_length=200, default='')
+    facebook = models.CharField(max_length=200, blank=True)
+    twitter = models.CharField(max_length=200, blank=True)
+    googleplus = models.CharField(max_length=200, blank=True)
+    instagram = models.CharField(max_length=200, blank=True)
 
     objects = UserManager()
 

@@ -67,8 +67,10 @@ body
 		min-width 300px
 		z-index 9999
 		color lead
-		border-bottom 1px solid clearlead
 		//box-shadow -19px 27px 133px -4px rgba(0,0,0,0.96)
+		
+		&.border-bottom
+			border-bottom 1px solid clearlead
 		
 		nav
 			display inline-block
@@ -135,7 +137,17 @@ body
 				margin-right 2em
 				color lead
 				
+				&.left
+					float left
+				
 				a
 					color lead
 					text-decoration none
-			
+
+@media screen and (max-width: 720px)
+
+    body
+        footer
+        	ul
+        		li.left
+        			display none	

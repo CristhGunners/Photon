@@ -33,6 +33,7 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'easy_thumbnails',
     'taggit',
+    'taggit_templatetags',
 )
 
 LOCAL_APPS = (

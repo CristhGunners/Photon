@@ -13,16 +13,16 @@
     {% block css %}{% endblock %}
 </head>
 <body>
-    <header>
+    <header {% block header_class %}{% endblock %}>
         <nav class="left">
             <a href="{% url 'photo:home' %}"><span class="icon-stack"></span></a>
             <a href="{% url 'photo:home' %}">Photon</a>
-            <a href="">Tags</a>
+            <a href="{% url 'photo:tags' %}">Tags</a>
         </nav>
         <nav class="right">
-            <a href=""><span class="icon-twitter"></span></a>
-            <a href=""><span class="icon-google-plus2"></span></a>
-            <a href=""><span class="icon-github4"></span></a>
+            <a href="https://twitter.com/cristhgunners" target="_blank"><span class="icon-twitter" target="_blank"></span></a>
+            <a href="https://plus.google.com/u/0/110479947234895589247/posts" target="_blank"><span class="icon-google-plus2"></span></a>
+            <a href="https://github.com/CristhGunners/" target="_blank"><span class="icon-github4"></span></a>
             <a href="" data-dropdown="#dropdown-filter"><span class="icon-menu"></span></a>
         </nav>
     </header>
@@ -30,7 +30,12 @@
         {% block content %}{% endblock %}
     </section>
     <footer>
-        {% block footer %}{% endblock %}
+        <ul>
+            <li class="left">
+                Desarrollado por <strong><a href="https://twitter.com/cristhgunners" target="_blank">Cristhofer Andana.</a></strong>
+            </li>
+            {% block footer %}{% endblock %}
+        </ul>
     </footer>
     
     <div id="dropdown-filter" class="dropdown dropdown-tip dropdown-anchor-right">

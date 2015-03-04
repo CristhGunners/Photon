@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    Photon Tags
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/photo/tags.css" %}">
+{% endblock %}
+
+{% block header_class %}
+    class="border-bottom"
+{% endblock %}
+
+{% block content %}
+    {% load taggit_extras %}
+    <section class="tags">
+        <section class="grid-tags">
+            <ul>
+                {% get_taglist as tags for 'photo.Photo' %}
+                {% for tag in tags %}
+                    <li><a href="{% url 'photo:tag' tag.slug %}">{{tag.name}} <span>{{tag.num_times}}</span></a></li>
+                {% endfor %}
+            </ul>
+        </section>
+    </section>
+{% endblock %}

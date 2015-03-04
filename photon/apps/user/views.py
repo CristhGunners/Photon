@@ -24,7 +24,7 @@ class Detail_User(DetailView):
     def get_context_data(self, **kwargs):
         context = super(Detail_User, self).get_context_data(**kwargs)
         photos_all = Photo.objects.filter(
-            user=self.get_object(), is_active=True)
+            user=self.get_object(), is_active=True).order_by('-date_creation')
         paginator = Paginator(photos_all, 6)
         page = self.request.GET.get('page')
         try:
