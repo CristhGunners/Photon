@@ -1,5 +1,8 @@
+# encoding:utf-8
+# -*- encoding: utf-8 -*-
+
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, TemplateView, DetailView
+from django.views.generic import ListView, TemplateView, DetailView, RedirectView
 from photon.apps.photo.models import Photo
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
@@ -51,3 +54,15 @@ class Detail_Tag(DetailView):
             photos = paginator.page(paginator.num_pages)
         context['photos'] = photos
         return context
+
+
+class Download_Photo(RedirectView):
+
+    permanent = False
+    query_string = True
+
+    def get_redirect_url(self, *args, **kwargs):
+        photo = get_object_or_404(Photo, id=self.kwargs['id_photo'])
+        photo.update_download_counter()
+        self.url = photo.get_path_file()
+        return super(Download_Photo, self).get_redirect_url(*args, **kwargs)

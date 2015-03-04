@@ -8,6 +8,7 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static "css/user/user.css" %}">
+    <link rel="stylesheet" href="{% static "css/vendor/jquery.tipsy.css" %}">
 {% endblock %}
 
 {% block content %}
@@ -43,7 +44,7 @@
                 <div class="photo-info">
                     <time><span class="icon-clock"></span> {{photo.date_creation|date:"d ,F Y"}}</time>
                 </div>
-                <a href="" class="download"><span class="icon-cloud-download"></span></a>
+                <a href="{% url 'photo:download' photo.id %}" target="_blank" class="download" title="{{photo.download_count}}"><span class="icon-cloud-download"></span></a>
             </div>
             {% endfor %}
         </section>
@@ -51,17 +52,16 @@
 {% endblock %}
 
 {% block footer %}
-        <li>
-            Pagina {{ photos.number }} de {{ photos.paginator.num_pages }}.
-        </li>
-        {% if photos.has_next %}
-        <li>
-            <a href="?page={{ photos.next_page_number }}">Siguiente</a>
-        </li>
-        {% endif %}
-        {% if photos.has_previous %}
-        <li>
-            <a href="?page={{ photos.previous_page_number }}">Anterior</a>
-        </li>
-        {% endif %}
+    {% include "mixins/paginator.html" %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/vendor/jquery.tipsy.min.js" %}"></script>
+    <script>
+        $(document).on("ready", init_page);
+
+        function init_page(){
+            $('.download').tipsy({position: 'top-center',});
+        }
+    </script>
 {% endblock %}

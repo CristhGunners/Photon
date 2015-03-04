@@ -1,0 +1,20 @@
+{% load thumbnail %}
+<section class="grid-photo">
+    {% for photo in photos %}
+    <div class="photo {% if not forloop.counter|divisibleby:2 and forloop.last %}full{% endif %}">
+        <div class="background" style="background-image:url('{{photo.image|thumbnail_url:'home'}}');"></div>
+        <div class="user-info">
+            <figure class="user">
+                <a href="{{photo.user.get_absolute_url}}">
+                <img src="{{photo.user.avatar|thumbnail_url:'avatar'}}" alt="">
+                </a>
+            </figure>
+            <h2><a href="{{photo.user.get_absolute_url}}">{{photo.user.full_name}}</a></h2>
+        </div>
+        <div class="photo-info">
+            <time><span class="icon-clock"></span> {{photo.date_creation|date:"d ,F Y"}}</time>
+        </div>
+        <a href="{% url 'photo:download' photo.id %}" target="_blank" class="download" title="{{photo.download_count}}"><span class="icon-cloud-download"></span></a>
+    </div>
+    {% endfor %}
+</section>

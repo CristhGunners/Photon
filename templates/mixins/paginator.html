@@ -1,0 +1,13 @@
+<li>
+    Pagina {{ photos.number }} de {{ photos.paginator.num_pages }}.
+</li>
+{% if photos.has_next %}
+<li>
+    <a href="?page={{ photos.next_page_number }}">Siguiente</a>
+</li>
+{% endif %}
+{% if photos.has_previous %}
+<li>
+    <a href="?page={{ photos.previous_page_number }}">Anterior</a>
+</li>
+{% endif %}

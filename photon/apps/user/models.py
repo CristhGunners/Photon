@@ -1,3 +1,6 @@
+# encoding:utf-8
+# -*- encoding: utf-8 -*-
+
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import title

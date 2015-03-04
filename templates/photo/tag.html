@@ -8,49 +8,30 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static "css/photo/tag.css" %}">
+    <link rel="stylesheet" href="{% static "css/vendor/jquery.tipsy.css" %}">
 {% endblock %}
 
 {% block content %}
-    {% load thumbnail %}
     <section class="tag">
         <section class="info-tag">
             <h2>{{tag}}</h2>
             <h3>{{photos|length}}</h3>
         </section>
-        <section class="grid-photo">
-            {% for photo in photos %}
-            <div class="photo {% if not forloop.counter|divisibleby:2 and forloop.last %}full{% endif %}">
-                <div class="background" style="background-image:url('{{photo.image|thumbnail_url:'home'}}');"></div>
-                <div class="user-info">
-                    <figure class="user">
-                        <a href="{{photo.user.get_absolute_url}}">
-                        <img src="{{photo.user.avatar|thumbnail_url:'avatar'}}" alt="">
-                        </a>
-                    </figure>
-                    <h2><a href="{{photo.user.get_absolute_url}}">{{photo.user.full_name}}</a></h2>
-                </div>
-                <div class="photo-info">
-                    <time><span class="icon-clock"></span> {{photo.date_creation|date:"d ,F Y"}}</time>
-                </div>
-                <a href="" class="download"><span class="icon-cloud-download"></span></a>
-            </div>
-            {% endfor %}
-        </section>
+        {% include "mixins/grid-photo.html" %}
     </section>
 {% endblock %}
 
 {% block footer %}
-        <li>
-            Pagina {{ photos.number }} de {{ photos.paginator.num_pages }}.
-        </li>
-        {% if photos.has_next %}
-        <li>
-            <a href="?page={{ photos.next_page_number }}">Siguiente</a>
-        </li>
-        {% endif %}
-        {% if photos.has_previous %}
-        <li>
-            <a href="?page={{ photos.previous_page_number }}">Anterior</a>
-        </li>
-        {% endif %}
+    {% include "mixins/paginator.html" %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/vendor/jquery.tipsy.min.js" %}"></script>
+    <script>
+        $(document).on("ready", init_page);
+
+        function init_page(){
+            $('.download').tipsy({position: 'top-center',});
+        }
+    </script>
 {% endblock %}
