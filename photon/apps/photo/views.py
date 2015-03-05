@@ -64,5 +64,17 @@ class Download_Photo(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         photo = get_object_or_404(Photo, id=self.kwargs['id_photo'])
         photo.update_download_counter()
-        self.url = photo.get_path_file()
+        self.url = self.request.META.get('HTTP_REFERER')
         return super(Download_Photo, self).get_redirect_url(*args, **kwargs)
+
+
+class Views_Photo(RedirectView):
+
+    permanent = False
+    query_string = True
+
+    def get_redirect_url(self, *args, **kwargs):
+        photo = get_object_or_404(Photo, id=self.kwargs['id_photo'])
+        photo.update_views_counter()
+        self.url = photo.get_path_file()
+        return super(Views_Photo, self).get_redirect_url(*args, **kwargs)

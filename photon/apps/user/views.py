@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import DetailView
+from django.views.generic import DetailView, TemplateView
 from .models import User
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -14,6 +14,14 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def Logout(request):
     logout(request)
     return redirect('/')
+
+
+class Login(TemplateView):
+    template_name = "user/login.html"
+
+
+class Signup(TemplateView):
+    template_name = "user/signup.html"
 
 
 class Detail_User(DetailView):
@@ -38,3 +46,7 @@ class Detail_User(DetailView):
             photos = paginator.page(paginator.num_pages)
         context['photos'] = photos
         return context
+
+
+class Settings(TemplateView):
+    template_name = "user/settings.html"

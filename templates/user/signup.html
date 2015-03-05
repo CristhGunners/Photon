@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    Photon Registrarse
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/user/signup.css" %}">
+{% endblock %}
+
+{% block header_class %}
+    class="border-bottom"
+{% endblock %}
+
+{% block content %}
+    <section class="login">
+        <span class="icon-stack logo"></span>
+        <h2>Photon</h2>
+        <h3>Registrate Gratis</h3>
+        <form action="" method="POST" autocomplete="off">
+            <fieldset>
+                <input type="text">
+            </fieldset>
+            <fieldset>
+                <input type="text">
+            </fieldset>
+            <fieldset>
+                <input type="text">
+            </fieldset>
+            <fieldset>
+                <button>Enviar</button>
+            </fieldset>
+            <fieldset>
+                <p>
+                Photon es una plataforma que te permite compartir tus imagenes con las demas personas de manera gratuita y facil. Encuentra las mejores imagenes para tus proyectos y trabajos. Entra gratis ya mismo.
+                </p>
+                <a href="{% url 'user:login' %}">Entrar</a>
+            </fieldset>
+        </form>
+    </section>
+{% endblock %}

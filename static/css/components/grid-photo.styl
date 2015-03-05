@@ -75,15 +75,26 @@ section.grid-photo
                 color white
                 margin 0.5em
         
-        a.download
-            color white
-            background green
-            border-radius 5px
-            padding 0.5em
-            text-decoration none
+        div.photo-options
             position absolute
             right 0.5em
             bottom 0.5em
+        
+            a
+                color white
+                border-radius 5px
+                padding 0.5em
+                text-decoration none
+                margin 0.25em
+                display inline-block
+                vertical-align middle
+            
+                &.download
+                    background green
+                
+                &.views
+                    background twitter
+            
 
 
 @media screen and (max-width: 720px)

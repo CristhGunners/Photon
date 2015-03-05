@@ -14,7 +14,12 @@
         <div class="photo-info">
             <time><span class="icon-clock"></span> {{photo.date_creation|date:"d ,F Y"}}</time>
         </div>
-        <a href="{% url 'photo:download' photo.id %}" target="_blank" class="download" title="{{photo.download_count}}"><span class="icon-cloud-download"></span></a>
+        <div class="photo-options">
+            <a href="{% url 'photo:views' photo.id %}" target="_blank" class="views" title="{{photo.views}}">
+                <span class="icon-eye"></span>
+            </a>
+            <a href="{% url 'photo:download' photo.id %}" class="download" title="{{photo.download_count}}"><span class="icon-cloud-download"></span></a>
+        </div>
     </div>
     {% endfor %}
 </section>

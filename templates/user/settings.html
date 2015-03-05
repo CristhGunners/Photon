@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    {{user.full_name}} Configuración
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/user/settings.css" %}">
+{% endblock %}
+
+{% block header_class %}
+    class="border-bottom"
+{% endblock %}
+
+{% block content %}
+    <section class="settings">
+        
+    </section>
+{% endblock %}
