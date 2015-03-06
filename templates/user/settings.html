@@ -15,7 +15,28 @@
 {% endblock %}
 
 {% block content %}
+    {% load thumbnail %}
     <section class="settings">
-        
+        <form action="{% url 'user:settings' %}" method="POST" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+                <figure>
+                    <img src="{{user.avatar|thumbnail_url:'avatar'}}" alt="">
+                    <div class="fileUpload icon-image">
+                        {{form.avatar}}
+                    </div>
+                </figure>
+            </fieldset>
+            {% for field in form %}
+                {% if field.name != 'avatar' %}
+                    <fieldset>
+                        {{field}}
+                    </fieldset>
+                {% endif %}
+            {% endfor %}
+            <fieldset>
+                <button type="submit">Guardar</button>
+            </fieldset>
+        </form>
     </section>
 {% endblock %}

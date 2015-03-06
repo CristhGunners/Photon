@@ -1,5 +1,84 @@
 @import '../base/base'
+@import '../components/form-user'
 
 section.settings
     width 100%
     
+    form
+        fieldset
+            &:first-child
+                margin-bottom 3em
+
+            figure
+                margin 0.5em auto
+                display block
+                border-radius 50%
+                width 25%
+                min-width 50px
+                position relative
+                
+                img
+                    width 100%
+                    border-radius 50%
+            
+            div.fileUpload
+                position absolute
+                overflow hidden
+                top 5em
+                right 0.5em
+                height 25px
+                width 25px
+                border 0
+                transition 0.5s all
+                border-radius 50%
+
+                padding 0.3em
+                display inline-block
+                margin-bottom 0
+                font-size 1em
+                text-align center
+                vertical-align top
+                cursor pointer
+                color white
+                background green
+                box-shadow 0px 0px 30px 0px rgba(0, 0, 0, 0.75)
+
+                &:before
+                    top 8px 
+                    left 0
+                    right 0
+                    position absolute
+                    cursor pointer
+
+                &:hover
+                    opacity 1
+
+                input.upload
+                    position absolute
+                    top 0
+                    cursor pointer
+                    right 0
+                    margin 0
+                    padding 0
+                    font-weight normal
+                    cursor pointer
+                    opacity 0
+                
+                input[type="text"]
+                    position absolute
+                    bottom 0
+                    color white
+                    left 0
+                    cursor pointer
+                    right 0
+                    text-align center
+                    font-size 2.75em
+                    width 80%
+                    font-weight bold
+                    margin 0.5em auto
+                    z-index 5
+                    background transparent
+                    border 0
+                    
+                    &::-webkit-input-placeholder
+                        color white
