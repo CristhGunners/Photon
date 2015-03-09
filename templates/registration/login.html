@@ -18,23 +18,32 @@
     <section class="login">
         <span class="icon-stack logo"></span>
         <h2>Photon</h2>
+        {% if user.is_authenticated %}
+        <h3>Ya Has Iniciado Sesion</h3>
+        {% else %}
         <h3>Inicia Sesion</h3>
-        <form action="" method="POST" autocomplete="off">
+        <form action="{% url 'auth_login' %}" method="POST" autocomplete="off">
+            {% csrf_token %}
+            {% for field in form %}
+                <p>
+                    {% if field.name == "username" %}
+                        <label for="id_{{field.name}}">Nombre de usuario</label>
+                    {% else %}
+                        {{field.label_tag}}
+                    {% endif %}
+                    {{ field }}    
+                </p>
+            {% endfor %}
             <fieldset>
-                <input type="text">
-            </fieldset>
-            <fieldset>
-                <input type="text">
-            </fieldset>
-            <fieldset>
-                <button>Entrar</button>
+                <button type="submit">Entrar</button>
             </fieldset>
             <fieldset>
                 <p>
                 Photon es una plataforma que te permite compartir tus imagenes con las demas personas de manera gratuita y facil. Encuentra las mejores imagenes para tus proyectos y trabajos. Registrate gratis ya mismo.
                 </p>
-                <a href="{% url 'user:signup' %}">Registrarse</a>
+                <a href="{% url 'registration_register' %}">Registrarse</a>
             </fieldset>
         </form>
+        {% endif %}
     </section>
 {% endblock %}

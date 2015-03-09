@@ -1,30 +1,15 @@
 # encoding:utf-8
 # -*- encoding: utf-8 -*-
 
-from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import DetailView, TemplateView, FormView, UpdateView
-from .models import User
-from django.contrib.auth import logout
+from django.shortcuts import get_object_or_404
+from django.views.generic import DetailView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from photon.apps.photo.models import Photo
-from .forms import Form_Settings_User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db import IntegrityError
-
-
-@login_required
-def Logout(request):
-    logout(request)
-    return redirect('/')
-
-
-class Login(TemplateView):
-    template_name = "user/login.html"
-
-
-class Signup(TemplateView):
-    template_name = "user/signup.html"
+from photon.apps.photo.models import Photo
+from .forms import Form_Settings_User
+from .models import User
 
 
 class Detail_User(DetailView):

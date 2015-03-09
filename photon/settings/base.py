@@ -28,12 +28,14 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 )
 
 THIRD_PARTY_APPS = (
     'easy_thumbnails',
     'taggit',
     'taggit_templatetags',
+    'registration',
 )
 
 LOCAL_APPS = (
@@ -94,7 +96,7 @@ SOUTH_MIGRATION_MODULES = {
 
 # Auth
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'user.User'
@@ -107,3 +109,20 @@ THUMBNAIL_ALIASES = {
         'home': {'size': (720, 400), 'crop': True},
     },
 }
+
+# Registration
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = False
+
+# Site
+
+SITE_ID = 1
+
+# Email
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'host@gmail.com'
+EMAIL_HOST_PASSWORD = '*****'

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    Photon
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/user/signup.css" %}">
+{% endblock %}
+
+{% block header_class %}
+    class="border-bottom"
+{% endblock %}
+
+{% block content %}
+    <section class="login">
+        <span class="icon-stack logo"></span>
+        <h2>Photon</h2>
+        <h3>Ha Ocurrido Un Problema Al Activar Tu Cuenta</h3>
+    </section>
+{% endblock %}
