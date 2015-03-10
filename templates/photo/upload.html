@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    Photon Subir Imagen
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/photo/upload.css" %}">
+{% endblock %}
+
+{% block header_class %}
+    class="border-bottom"
+{% endblock %}
+
+{% block content %}
+    <section class="upload">
+        <h2>Subir Imagen</h2>
+        <figure class="preview"> 
+            <img src="">
+        </figure>
+        <form action="{% url 'photo:upload' %}" method="POST" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button id="upload_button" type="button">Busca <br/> la imagen</button>
+            {{form.as_p}}
+            <button type="submit">Publicar</button>
+        </form>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/photo/previewImg.js" %}"></script>
+{% endblock %}

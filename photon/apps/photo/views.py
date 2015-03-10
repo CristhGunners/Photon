@@ -2,10 +2,34 @@
 # -*- encoding: utf-8 -*-
 
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, TemplateView, DetailView, RedirectView
-from photon.apps.photo.models import Photo
+from django.views.generic import ListView, TemplateView, DetailView, RedirectView, CreateView, View
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
+from photon.apps.photo.models import Photo
+from .forms import Form_Photo
+
+
+class Upload(CreateView):
+    template_name = "photo/upload.html"
+    form_class = Form_Photo
+    model = Photo
+    success_url = "/"
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(Upload, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super(Upload, self).form_valid(form)
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class Home(ListView):
@@ -56,16 +80,15 @@ class Detail_Tag(DetailView):
         return context
 
 
-class Download_Photo(RedirectView):
+class Download_Photo(View):
 
-    permanent = False
-    query_string = True
-
-    def get_redirect_url(self, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         photo = get_object_or_404(Photo, id=self.kwargs['id_photo'])
         photo.update_download_counter()
-        self.url = self.request.META.get('HTTP_REFERER')
-        return super(Download_Photo, self).get_redirect_url(*args, **kwargs)
+        response = HttpResponse(
+            photo.image, content_type='application/force-download')
+        response['Content-Disposition'] = 'attachment; filename=%s' % photo.image.name
+        return response
 
 
 class Views_Photo(RedirectView):

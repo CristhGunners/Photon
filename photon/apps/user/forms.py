@@ -28,5 +28,5 @@ class Form_Settings_User(forms.ModelForm):
             'instagram': forms.TextInput(attrs={
                 'placeholder': 'Instagram'}),
             'avatar': forms.FileInput(attrs={
-                'class': 'upload', 'id': 'files'}),
+                'id': 'profile_input'}),
         }

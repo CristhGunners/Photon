@@ -3,7 +3,7 @@
 {% load staticfiles %}
 
 {% block title %}
-    Photon Tags {{tag}}
+    Photon Tags {{tag|title}}
 {% endblock %}
 
 {% block css %}
@@ -14,7 +14,7 @@
 {% block content %}
     <section class="tag">
         <section class="info-tag">
-            <h2>{{tag}}</h2>
+            <h2>{{tag|title}}</h2>
             <h3>{{photos|length}}</h3>
         </section>
         {% include "mixins/grid-photo.html" %}
@@ -27,11 +27,5 @@
 
 {% block js %}
     <script src="{% static "js/vendor/jquery.tipsy.min.js" %}"></script>
-    <script>
-        $(document).on("ready", init_page);
-
-        function init_page(){
-            $('.download').tipsy({position: 'top-center',});
-        }
-    </script>
+    <script src="{% static "js/mixins/tipsy.js" %}"></script>
 {% endblock %}

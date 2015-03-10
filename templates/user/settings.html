@@ -22,9 +22,8 @@
             <fieldset>
                 <figure>
                     <img src="{{user.avatar|thumbnail_url:'avatar'}}" alt="">
-                    <div class="fileUpload icon-image">
-                        {{form.avatar}}
-                    </div>
+                    {{form.avatar}}
+                    <button id="upload_button" type="button"><span class="icon-image"></span></button>
                 </figure>
             </fieldset>
             {% for field in form %}
@@ -39,4 +38,8 @@
             </fieldset>
         </form>
     </section>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/user/previewUser.js" %}"></script>
 {% endblock %}

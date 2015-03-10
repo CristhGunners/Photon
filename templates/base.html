@@ -42,7 +42,7 @@
         <ul class="dropdown-menu">
             {% if user.is_authenticated %}
                 <li><a href="{{ user.get_absolute_url }}" class=""><span class="icon-user"></span> Yo</a></li>
-                <li><a href="" class=""><span class="icon-cloud-upload"></span> Subir Imagen</a></li>
+                <li><a href="{% url 'photo:upload' %}" class=""><span class="icon-cloud-upload"></span> Subir Imagen</a></li>
                 <li><a href="{% url 'user:settings' %}" class=""><span class="icon-cog"></span> Configuracion</a></li>
                 <li><a href="{% url 'auth_logout' %}" class=""><span class="icon-exit"></span> Salir</a></li>
             {% else %}
