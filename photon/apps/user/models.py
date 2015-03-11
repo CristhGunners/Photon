@@ -39,7 +39,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     avatar = models.ImageField(upload_to='author')
-    slug = models.SlugField(unique=True)
     website = models.URLField(blank=True)
 
     # Redes Sociales
@@ -65,7 +64,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return title('%s %s' % (self.first_name, self.last_name))
 
     def get_absolute_url(self):
-        return reverse('user:detail', args=(self.slug,))
+        return reverse('user:detail', args=(self.username,))
 
     def get_photo_count(self):
         return Photo.objects.filter(

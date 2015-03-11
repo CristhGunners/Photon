@@ -18,7 +18,8 @@ class Detail_User(DetailView):
     context_object_name = "profile"
 
     def get_object(self):
-        return get_object_or_404(User, slug=self.kwargs['slug_user'])
+        return get_object_or_404(
+            User, username__iexact=self.kwargs['user'])
 
     def get_context_data(self, **kwargs):
         context = super(Detail_User, self).get_context_data(**kwargs)
@@ -48,7 +49,7 @@ class Settings(UpdateView):
 
     def get_object(self):
         return get_object_or_404(
-            User, is_active=True, slug=self.request.user.slug)
+            User, is_active=True, username__iexact=self.request.user.username)
 
     def get_initial(self):
         user = self.request.user

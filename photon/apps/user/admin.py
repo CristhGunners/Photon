@@ -9,7 +9,7 @@ class UserAdmin(UserAdmin):
     fieldsets = (
         ('User', {'fields': ('username', 'password')}),
         ('Persona Info', {
-         'fields': ('first_name', 'last_name', 'email', 'avatar', 'slug')}),
+         'fields': ('first_name', 'last_name', 'email', 'avatar')}),
         ('Social Networks', {
          'fields': (
             'facebook', 'twitter', 'googleplus', 'instagram', 'website')}),
