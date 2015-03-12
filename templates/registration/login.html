@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static "css/user/login.css" %}">
+    <link rel="stylesheet" href="{% static "css/user/registration.css" %}">
 {% endblock %}
 
 {% block header_class %}
@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block content %}
-    <section class="login">
+    <section class="base">
         <span class="icon-stack logo"></span>
         <h2>Photon</h2>
         {% if user.is_authenticated %}
@@ -25,17 +25,21 @@
         <form action="{% url 'auth_login' %}" method="POST" autocomplete="off">
             {% csrf_token %}
             {% for field in form %}
+                {{field.errors}}
                 <p>
                     {% if field.name == "username" %}
                         <label for="id_{{field.name}}">Nombre de usuario</label>
                     {% else %}
                         {{field.label_tag}}
                     {% endif %}
-                    {{ field }}    
+                    {{ field }}
                 </p>
             {% endfor %}
             <fieldset>
                 <button type="submit">Entrar</button>
+            </fieldset>
+            <fieldset>
+                <a href="{% url 'auth_password_reset' %}" class="forgot">¿ Olvide mi contraseña ?</a>
             </fieldset>
             <fieldset>
                 <p>

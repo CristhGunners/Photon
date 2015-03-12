@@ -32,7 +32,11 @@
                         {{field}}
                     </fieldset>
                 {% endif %}
+                {{ field.errors }}
             {% endfor %}
+            <fieldset>
+                <a href="{% url 'auth_password_change' %}" class="password">Cambiar Constraseña</a>
+            </fieldset>
             <fieldset>
                 <button type="submit">Guardar</button>
             </fieldset>

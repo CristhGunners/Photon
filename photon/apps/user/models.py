@@ -35,7 +35,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
 
     username = models.CharField(max_length=100, unique=True)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     avatar = models.ImageField(upload_to='author')
@@ -43,10 +43,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # Redes Sociales
 
-    facebook = models.CharField(max_length=200, blank=True)
-    twitter = models.CharField(max_length=200, blank=True)
-    googleplus = models.CharField(max_length=200, blank=True)
-    instagram = models.CharField(max_length=200, blank=True)
+    facebook = models.URLField(blank=True)
+    twitter = models.URLField(blank=True)
+    googleplus = models.URLField(blank=True)
+    instagram = models.URLField(blank=True)
 
     objects = UserManager()
 

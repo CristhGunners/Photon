@@ -36,3 +36,7 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join('media')
+
+# Registration
+
+REGISTRATION_OPEN = True

@@ -1,15 +1,26 @@
 @import '../base/base'
 @import '../components/form-user'
 
-section.login
+section.base
     width 100%
     
+    span.big
     span.logo
-        font-size 4em
         text-align center
         color lead
         margin 0.5em auto
         display block
+        
+        &.logo
+            font-size 4em
+        
+        &.done
+            font-size 3em
+            color green
+        
+        &.fail
+            font-size 3em
+            color google
         
     h2
         text-align center
@@ -21,5 +32,10 @@ section.login
         color lead
         text-align center
         margin 0.5em auto
+    
+    p
+        color lead
+        text-align justify
+        margin 1em auto
         
         

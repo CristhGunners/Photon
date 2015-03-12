@@ -2,7 +2,7 @@
 <section class="grid-photo">
     {% for photo in photos %}
     <div class="photo {% if not forloop.counter|divisibleby:2 and forloop.last %}full{% endif %}">
-        <div class="background" style="background-image:url('{{photo.image|thumbnail_url:'home'}}');"></div>
+        <div class="background" style="{% if not forloop.counter|divisibleby:2 and forloop.last %}background-image:url('{{ MEDIA_URL }}{{photo.image}}');{% else %}background-image:url('{{photo.image|thumbnail_url:'home'}}');{% endif %}"></div>
         <div class="user-info">
             <figure class="user">
                 <a href="{{photo.user.get_absolute_url}}">

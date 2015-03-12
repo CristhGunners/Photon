@@ -6,7 +6,6 @@ from django.views.generic import DetailView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db import IntegrityError
 from photon.apps.photo.models import Photo
 from .forms import Form_Settings_User
 from .models import User
@@ -69,14 +68,10 @@ class Settings(UpdateView):
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        try:
-            self.object.save()
-        except IntegrityError:
-            form.add_error("username", "Ya esta registrado")
-            return self.render_to_response(self.get_context_data(form=form))
+        self.object.save()
         form.save()
+        self.success_url = self.object.get_absolute_url()
         return super(Settings, self).form_valid(form)
 
     def form_invalid(self, form):
-        print(form.errors)
         return self.render_to_response(self.get_context_data(form=form))

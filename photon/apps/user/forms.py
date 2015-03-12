@@ -1,5 +1,6 @@
 from django import forms
 from .models import User
+from django.utils.translation import ugettext_lazy as _
 
 
 class Form_Settings_User(forms.ModelForm):
@@ -29,4 +30,15 @@ class Form_Settings_User(forms.ModelForm):
                 'placeholder': 'Instagram'}),
             'avatar': forms.FileInput(attrs={
                 'id': 'profile_input'}),
+        }
+        error_messages = {
+            "avatar": {
+                "required": "Seleccione una imagen.",
+            },
+            "username": {
+                "unique": "El nombre de usuario ya esta ocupado.",
+            },
+            "email": {
+                "unique": "El email ya esta ocupado.",
+            }
         }
