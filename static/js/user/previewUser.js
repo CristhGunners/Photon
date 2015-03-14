@@ -1,6 +1,17 @@
 $(document).on("ready",init_page);
 
 function init_page(){
+
+    $("input#id_username").on({
+        keydown: function(e) {
+        if (e.which === 32)
+            return false;
+        },
+        change: function() {
+            this.value = this.value.replace(/\s/g, "");
+        }
+    });
+
     var file, 
     render;
 

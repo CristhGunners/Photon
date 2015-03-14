@@ -7,13 +7,11 @@ class Form_Settings_User(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name', 'avatar',
+        fields = ['username', 'first_name', 'last_name', 'avatar',
                   'website', 'facebook', 'twitter', 'googleplus', 'instagram']
         widgets = {
             'username': forms.TextInput(attrs={
                 'placeholder': 'Nombre De Usuario'}),
-            'email': forms.TextInput(attrs={
-                'placeholder': 'Email'}),
             'first_name': forms.TextInput(attrs={
                 'placeholder': 'Nombre'}),
             'last_name': forms.TextInput(attrs={
@@ -38,7 +36,11 @@ class Form_Settings_User(forms.ModelForm):
             "username": {
                 "unique": "El nombre de usuario ya esta ocupado.",
             },
-            "email": {
-                "unique": "El email ya esta ocupado.",
-            }
         }
+
+    def save(self, commit=True):
+        instance = super(Form_Settings_User, self).save(commit=False)
+        instance.username = self.cleaned_data['username'].replace(" ", "")
+        if commit:
+            instance.save()
+        return instance

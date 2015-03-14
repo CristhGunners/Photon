@@ -26,6 +26,9 @@
                     <button id="upload_button" type="button"><span class="icon-image"></span></button>
                 </figure>
             </fieldset>
+            <fieldset>
+                <input type="email" value="{{user.email}}" readonly>
+            </fieldset>
             {% for field in form %}
                 {% if field.name != 'avatar' %}
                     <fieldset>
