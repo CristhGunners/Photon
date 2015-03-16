@@ -119,14 +119,6 @@ REGISTRATION_AUTO_LOGIN = False
 
 SITE_ID = 1
 
-# Email
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'host@gmail.com'
-EMAIL_HOST_PASSWORD = '*****'
-
 # Backends
 
 AUTHENTICATION_BACKENDS = (
