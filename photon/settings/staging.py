@@ -4,7 +4,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['https://photonapp.herokuapp.com/']
+ALLOWED_HOSTS = []
 
 DATABASES = {
     'default': {
