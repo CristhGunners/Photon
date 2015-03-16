@@ -1,10 +1,10 @@
 from .base import *
 
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
@@ -18,6 +18,7 @@ DATABASES = {
 }
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
 
 MEDIA_URL = '/media/'
 
