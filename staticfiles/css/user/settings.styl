@@ -1,0 +1,60 @@
+@import '../base/base'
+@import '../components/form-user'
+
+section.settings
+    width 100%
+    
+    form
+        ul
+            margin 0 auto
+            list-style none
+            padding 0
+            
+            li
+                color google
+
+        fieldset
+            &:first-child
+                margin-bottom 3em
+            
+            a.password
+                background twitter
+                width 60%
+
+            figure
+                margin 0.5em auto
+                display block
+                border-radius 50%
+                width 25%
+                min-width 50px
+                position relative
+                
+                img
+                    width 100%
+                    border-radius 50%
+            
+                input[type="file"]
+                    display none
+            
+                button#upload_button
+                  color rgba(255, 255, 255, 0.85)
+                  margin 0.5em auto
+                  letter-spacing 2px
+                  font-size 1em
+                  background green
+                  border none
+                  border-radius 50%
+                  padding 7px 8px
+                  cursor pointer
+                  position absolute
+                  bottom 0
+                  left 0
+
+                    &:hover
+                        background #444
+                
+                    &:active
+                        background #111
+                
+                    &:focus
+                        outline none
