@@ -1,5 +1,11 @@
 from .base import *
 
+DEBUG = True
+
+TEMPLATE_DEBUG = True
+
+ALLOWED_HOSTS = ['https://photonapp.herokuapp.com/']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
