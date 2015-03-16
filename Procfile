@@ -1,1 +1,1 @@
-web: gunicorn photon.wsgi
+web: python manage.py runserver --settings=photon.settings.staging 0.0.0.0:$PORT --noreload
