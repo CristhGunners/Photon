@@ -2,6 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.contrib.auth import views as auth_views
+from photon.apps.user.views import RegistrationViewUniqueEmail
+
 
 urlpatterns = patterns(
     '',
@@ -13,6 +15,8 @@ urlpatterns = patterns(
     url(r'^accounts/password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^accounts/password/reset/complete/$', auth_views.password_reset_complete,
         name='password_reset_complete'),
+    url(r'^accounts/register/$', RegistrationViewUniqueEmail.as_view(),
+                    name='registration_register'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^', include('photon.apps.photo.urls', namespace="photo")),
     url(r'^', include('photon.apps.user.urls', namespace="user")),

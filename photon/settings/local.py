@@ -41,10 +41,10 @@ MEDIA_ROOT = os.path.join('media')
 
 REGISTRATION_OPEN = True
 
-# Email
+# Email - Add Your Settings
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'photonwebapp@gmail.com'
-EMAIL_HOST_PASSWORD = 'photon22446688'
+EMAIL_HOST_USER = 'host@gmail.com'
+EMAIL_HOST_PASSWORD = '*****'

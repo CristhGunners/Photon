@@ -2,13 +2,21 @@
 # -*- encoding: utf-8 -*-
 
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, UpdateView
+from django.http import HttpResponse
+from django.views.generic import DetailView, UpdateView, View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from photon.apps.photo.models import Photo
 from .forms import Form_Settings_User
-from .models import User
+from .models import User, TmpImage
+from registration.backends.default.views import RegistrationView
+from registration.forms import RegistrationFormUniqueEmail
+from easy_thumbnails.files import get_thumbnailer
+
+
+class RegistrationViewUniqueEmail(RegistrationView):
+    form_class = RegistrationFormUniqueEmail
 
 
 class Detail_User(DetailView):
@@ -75,3 +83,18 @@ class Settings(UpdateView):
 
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
+
+
+class Crop(View):
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(Crop, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        tmpImg = TmpImage()
+        tmpImg.image = self.request.FILES['file']
+        tmpImg.save()
+        thumb_url = get_thumbnailer(tmpImg.image)['avatar'].url
+        tmpImg.delete()
+        return HttpResponse(thumb_url)

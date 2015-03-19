@@ -1,3 +1,4 @@
+{% load staticfiles %}
 {% load thumbnail %}
 <section class="grid-photo">
     {% for photo in photos %}
@@ -6,7 +7,11 @@
         <div class="user-info">
             <figure class="user">
                 <a href="{{photo.user.get_absolute_url}}">
-                <img src="{{photo.user.avatar|thumbnail_url:'avatar'}}" alt="">
+                {% if photo.user.avatar %}
+                    <img src="{{photo.user.avatar|thumbnail_url:'avatar'}}" alt="{{photo.user.full_name}}">
+                {% else %}
+                    <img src="{% static "images/avatardefault.jpg" %}" alt="{{photo.user.full_name}}">
+                {% endif %}
                 </a>
             </figure>
             <h2><a href="{{photo.user.get_absolute_url}}">{{photo.user.full_name}}</a></h2>

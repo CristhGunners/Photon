@@ -3,9 +3,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:site_name" content="Photon" />
     <title> {% block title %}{% endblock %} </title>
+    <meta property="og:site_name" content="Photon" />
+    <meta name="description" content="Banco de Imagenes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="{% static "images/logo.ico" %}">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oxygen:400,700,300'>
     <link rel='stylesheet' href='{% static "css/icomoon/style.css" %}'>
@@ -43,7 +44,7 @@
             {% if user.is_authenticated %}
                 <li><a href="{{ user.get_absolute_url }}" class=""><span class="icon-user"></span> Yo</a></li>
                 <li><a href="{% url 'photo:upload' %}" class=""><span class="icon-cloud-upload"></span> Subir Imagen</a></li>
-                <li><a href="{% url 'user:settings' %}" class=""><span class="icon-cog"></span> Configuracion</a></li>
+                <li><a href="{% url 'user:settings' %}" class=""><span class="icon-cog"></span> Configuración</a></li>
                 <li><a href="{% url 'auth_logout' %}" class=""><span class="icon-exit"></span> Salir</a></li>
             {% else %}
                 <li><a href="{% url 'auth_login' %}" class=""><span class="icon-enter"></span> Entrar</a></li>
@@ -53,7 +54,7 @@
     </div>
     
 
-    <script src="{% static "js/vendor/jquery-latest.js" %}"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="{% static "js/vendor/flowtype.js" %}"></script>
     <script src="{% static "js/vendor/jquery.dropdown.js" %}"></script>
     {% block js %}{% endblock %}

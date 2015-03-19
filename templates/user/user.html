@@ -16,7 +16,11 @@
     <section class="user">
         <section class="user-info">
             <figure>
-                <img src="{{profile.avatar|thumbnail_url:'avatar'}}" alt="">
+                {% if profile.avatar %}
+                    <img src="{{profile.avatar|thumbnail_url:'avatar'}}" alt="{{profile.full_name}}">
+                {% else %}
+                    <img src="{% static "images/avatardefault.jpg" %}" alt="{{profile.full_name}}">
+                {% endif %}
             </figure>
             <h2>{{profile.full_name}}</h2>
             {% if profile.website %}

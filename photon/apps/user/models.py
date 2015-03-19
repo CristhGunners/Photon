@@ -61,7 +61,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.username
 
     def full_name(self):
-        return title('%s %s' % (self.first_name, self.last_name))
+        if self.first_name or self.last_name:
+            return title('%s %s' % (self.first_name, self.last_name))
+        else:
+            return title(self.username)
 
     def get_absolute_url(self):
         return reverse('user:detail', args=(self.username,))
@@ -69,3 +72,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_photo_count(self):
         return Photo.objects.filter(
             user=self, is_active=True).count()
+
+
+class TmpImage(models.Model):
+    image = models.ImageField(upload_to="tmp")
+
+    def delete(self, *args, **kwargs):
+        self.image.delete()
+        super(TmpImage, self).delete(*args, **kwargs)

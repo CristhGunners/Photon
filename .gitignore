@@ -2,9 +2,16 @@
 Thumbs.db
 Desktop.ini
 
+# SQLite3 database files:
+*.db
+
+# Python Cache:
 __pycache__/
+
+# Python bytecode:
 *.py[cod]
 
+# Photon
 tmp/
 media/
 staticfiles/

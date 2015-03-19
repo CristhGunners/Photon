@@ -19,33 +19,29 @@ function init_page(){
         $("#profile_input").click();
     });
 
-    document.body.addEventListener("drop", function(ev){
-        file = ev.dataTransfer.files[0];
-        if(!file.type.match("image.*")) {
-            alert("This file isn't image or it's unsupported format");
-            return;
-        }
-        reader = new FileReader();
-        reader.addEventListener("load", (function(theFile) {
-            return function(e) {
-            $("figure img").attr("src",""+e.target.result+"");
-        };
-    })(file), false);
-        reader.readAsDataURL(file);
-    }, false);
-
     $("#profile_input").on("change", function(ev){
         file = ev.target.files[0];
         if(!file.type.match("image.*")) {
             alert("This file isn't image or it's unsupported format");
             return;
         }
-        reader = new FileReader();
-        reader.addEventListener("load", (function(theFile) {
-            return function(e) {
-                $("figure img").attr("src",""+e.target.result+"");
-            };
-        })(file), false);
-        reader.readAsDataURL(file);
+
+        var fd = new FormData();
+        fd.append("file", file);
+        fd.append("csrfmiddlewaretoken",document.getElementsByName('csrfmiddlewaretoken')[0].value);
+
+        $.ajax({
+            type: "POST",
+            url: "/crop-avatar/" ,  // or just url: "/my-url/path/"
+            processData: false,
+            contentType: false,
+            data:fd,
+            success: function(data) {
+                $("figure img").attr("src",""+data+"");
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                console.log("Ha Ocurrido el Siguiente Error:" +errorThrown+xhr.status+xhr.responseText);
+            }
+        });
     });
 }
