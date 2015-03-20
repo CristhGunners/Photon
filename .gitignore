@@ -2,7 +2,6 @@
 tmp/
 media/
 staticfiles/
-Procfile
 static/css/icomoon/demo-files/
 static/css/icomoon/Read Me.txt
 static/css/icomoon/selection.json
@@ -10,13 +9,7 @@ static/css/icomoon.zip
 db.sqlite3
 README.html
 commit.txt
-
-# Windows
-Thumbs.db
-Desktop.ini
-
-# SQLite3 database files:
-*.db
+Procfile
 
 # Python Cache:
 __pycache__/
