@@ -7,11 +7,12 @@ Photon es una plataforma de código libre, la cual representa un banco de imáge
 
 ## Caracteristicas
 
-- Registro y autentificación de usuarios
+- Registro(con validación por email) y autentificación de usuarios
 - Perfiles de usuarios
 - Subir imágenes
 - Paginación
-- Descargar y ver imágenes
+- Errores personalizados (403,404,500)
+- Descargar, eliminar y ver imágenes
 - Editar perfil
 - Diseño responsivo
 

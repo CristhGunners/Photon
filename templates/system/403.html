@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    Photon Error 403
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/user/registration.css" %}">
+{% endblock %}
+
+{% block header_class %}
+    class="border-bottom"
+{% endblock %}
+
+{% block content %}
+    <section class="base">
+        <span class="icon-stack logo"></span>
+        <h2>Photon Error 403</h2>
+        <h3>Acceso denegado.</h3>
+        <span class="icon-cross big fail"></span>
+    </section>
+{% endblock %}

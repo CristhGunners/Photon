@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 from photon.apps.user.views import RegistrationViewUniqueEmail
+from photon.apps.system.views import System_403, System_404, System_500
 
 
 urlpatterns = patterns(
@@ -21,6 +22,10 @@ urlpatterns = patterns(
     url(r'^', include('photon.apps.photo.urls', namespace="photo")),
     url(r'^', include('photon.apps.user.urls', namespace="user")),
 )
+
+handler403 = System_403.as_error_view()
+handler404 = System_404.as_error_view()
+handler500 = System_500.as_error_view()
 
 if settings.DEBUG:
     urlpatterns += patterns(
