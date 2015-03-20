@@ -1,16 +1,3 @@
-# Windows
-Thumbs.db
-Desktop.ini
-
-# SQLite3 database files:
-*.db
-
-# Python Cache:
-__pycache__/
-
-# Python bytecode:
-*.py[cod]
-
 # Photon
 tmp/
 media/
@@ -23,3 +10,16 @@ static/css/icomoon.zip
 db.sqlite3
 README.html
 commit.txt
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# SQLite3 database files:
+*.db
+
+# Python Cache:
+__pycache__/
+
+# Python bytecode:
+*.py[cod]
