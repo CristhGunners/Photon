@@ -1,15 +1,19 @@
 # encoding:utf-8
 # -*- encoding: utf-8 -*-
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import ListView, TemplateView, DetailView, RedirectView, CreateView, View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.exceptions import PermissionDenied
 from taggit.models import Tag
+
 from photon.apps.photo.models import Photo
+
 from .forms import Form_Photo
+
 
 
 class Upload(CreateView):
@@ -101,3 +105,15 @@ class Views_Photo(RedirectView):
         photo.update_views_counter()
         self.url = photo.get_path_file()
         return super(Views_Photo, self).get_redirect_url(*args, **kwargs)
+
+
+class Delete_Photo(View):
+
+    def get(self, request, *args, **kwargs):
+        photo = get_object_or_404(Photo, id=self.kwargs['id_photo'])
+        if photo.user == self.request.user:
+            photo.is_active = False
+            photo.save()
+        else:
+            raise PermissionDenied()
+        return redirect(self.request.user.get_absolute_url())

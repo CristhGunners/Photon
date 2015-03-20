@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from .views import Home, List_Tags, Detail_Tag, Download_Photo, Views_Photo, Upload
+from .views import Home, List_Tags, Detail_Tag, Download_Photo, Views_Photo, Upload, Delete_Photo
 
 urlpatterns = patterns(
     '',
@@ -11,4 +11,6 @@ urlpatterns = patterns(
         Download_Photo.as_view(), name='download'),
     url(r'^photo/views/(?P<id_photo>\d+)/$',
         Views_Photo.as_view(), name='views'),
+    url(r'^photo/delete/(?P<id_photo>\d+)/$',
+        Delete_Photo.as_view(), name='delete'),
 )

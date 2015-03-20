@@ -53,11 +53,40 @@
                         <span class="icon-eye"></span>
                     </a>
                     <a href="{% url 'photo:download' photo.id %}" class="download" title="{{photo.download_count}}"><span class="icon-cloud-download"></span></a>
+                    {% if user.is_authenticated %}
+                        {% if photo.user == user %}
+                            <a href="#" class="confirm-delete-photo{{photo.id}}_open delete"><span class="icon-bin2"></span></a>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
+            
+            {% if user == photo.user %}
+
+            <div id="confirm-delete-photo{{photo.id}}" class="modal">
+                <button class="confirm-delete-photo{{photo.id}}_close close"><span class="icon-cross"></span></button>
+                <h3> Eliminar Foto </h3>
+                <div>
+                    <p>
+                        ¿ Estas seguro que deseas eliminar la foto ?
+                    </p>
+                    <figure>
+                        <img src="{{photo.image|thumbnail_url:'home'}}" alt="">
+                    </figure>
+                    <p>
+                        <a href="{% url 'photo:delete' photo.id %}" class="delete">
+                            Eliminar
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            {% endif %}
+
             {% endfor %}
         </section>
     </section>
+
 {% endblock %}
 
 {% block footer %}
@@ -66,5 +95,7 @@
 
 {% block js %}
     <script src="{% static "js/vendor/jquery.tipsy.min.js" %}"></script>
-    <script src="{% static "js/mixins/tipsy.js" %}"></script>    
+    <script src="{% static "js/mixins/tipsy.js" %}"></script>
+    <script src="{% static "js/vendor/jquery.popupoverlay.js" %}"></script>
+    <script src="{% static "js/user/profile.js" %}"></script>
 {% endblock %}

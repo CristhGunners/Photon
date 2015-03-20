@@ -1,15 +1,17 @@
+<p align="center" style='text-align: center;'>
 <img src="https://scontent-dfw.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10636088_982456151772019_2909611528891555934_n.png?oh=92f85dcd4f97ed817f3ea431d9c823f9&oe=5574DE2F" alt="Photon" height="100" width="100" style="margin:0 auto;display:block;" />
+<h1 align="center" style="margin:0 auto;display:block;text-align:center;">Photon</h1>
+</p>
 
-<h1 style="text-align:center;">Photon</h1>
-Photon es una plataforma de codigo libre, la cual representa un banco de imagenes con multiples caracteristicas.
+Photon es una plataforma de código libre, la cual representa un banco de imágenes con múltiples características.
 
 ## Caracteristicas
 
-- Registro y autentificacion de usuarios
+- Registro y autentificación de usuarios
 - Perfiles de usuarios
-- Subir imagenes
+- Subir imágenes
 - Paginación
-- Descargar y ver imagenes
+- Descargar y ver imágenes
 - Editar perfil
 - Diseño responsivo
 
@@ -49,7 +51,7 @@ Photon es una plataforma de codigo libre, la cual representa un banco de imagene
 
 ![Photon Register](https://scontent-dfw.xx.fbcdn.net/hphotos-xap1/t31.0-8/11050326_982453785105589_5935297192697308830_o.png)
 
-## Pruebalo en tu equipo
+## Prueba Photon en tu equipo
 
 Descargamos el repositorio y creamos nuestro entorno virtual, usare virtualenvwrapper:
     
@@ -60,7 +62,7 @@ Ahora nos ubicamos en el directorio del repositorio **photon** y ejecutamos:
 
     pip install -r requirements/local.txt
 
-Con esto ya tendremos listo los paquetes necesarios para arrancar el proyecto. Ahora necesitamos agregar nuestros valores de configuración para el envio de email en el archivo **photon/settings/local.py** :
+Con esto ya tendremos listo los paquetes necesarios para arrancar el proyecto. Ahora necesitamos agregar nuestros valores de configuración para el envió de email en el archivo **photon/settings/local.py** :
     
     # Ejemplo con Gmail
 
