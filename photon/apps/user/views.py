@@ -6,13 +6,15 @@ from django.http import HttpResponse
 from django.views.generic import DetailView, UpdateView, View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from photon.apps.photo.models import Photo
-from .forms import Form_Settings_User
-from .models import User, TmpImage
+from photon.apps.system.views import my_paginator
+
 from registration.backends.default.views import RegistrationView
 from registration.forms import RegistrationFormUniqueEmail
 from easy_thumbnails.files import get_thumbnailer
+from .forms import Form_Settings_User
+from .models import User, TmpImage
 
 
 class RegistrationViewUniqueEmail(RegistrationView):
@@ -32,14 +34,7 @@ class Detail_User(DetailView):
         context = super(Detail_User, self).get_context_data(**kwargs)
         photos_all = Photo.objects.filter(
             user=self.get_object(), is_active=True).order_by('-date_creation')
-        paginator = Paginator(photos_all, 6)
-        page = self.request.GET.get('page')
-        try:
-            photos = paginator.page(page)
-        except PageNotAnInteger:
-            photos = paginator.page(1)
-        except EmptyPage:
-            photos = paginator.page(paginator.num_pages)
+        photos = my_paginator(self, photos_all)
         context['photos'] = photos
         return context
 

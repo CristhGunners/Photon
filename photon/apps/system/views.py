@@ -1,4 +1,17 @@
 from django.views.generic import TemplateView, View
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
+def my_paginator(self, queryset):
+    paginator = Paginator(queryset, 6)
+    page = self.request.GET.get('page')
+    try:
+        photos = paginator.page(page)
+    except PageNotAnInteger:
+        photos = paginator.page(1)
+    except EmptyPage:
+        photos = paginator.page(paginator.num_pages)
+    return photos
 
 
 class BaseErrorView(View):

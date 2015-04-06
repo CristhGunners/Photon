@@ -6,14 +6,14 @@ from django.views.generic import ListView, TemplateView, DetailView, RedirectVie
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.exceptions import PermissionDenied
 from taggit.models import Tag
+
+from photon.apps.system.views import my_paginator
 
 from photon.apps.photo.models import Photo
 
 from .forms import Form_Photo
-
 
 
 class Upload(CreateView):
@@ -43,14 +43,7 @@ class Home(ListView):
     def get_queryset(self):
         photos_all = Photo.objects.filter(is_active=True).order_by(
             '-date_creation')
-        paginator = Paginator(photos_all, 6)
-        page = self.request.GET.get('page')
-        try:
-            photos = paginator.page(page)
-        except PageNotAnInteger:
-            photos = paginator.page(1)
-        except EmptyPage:
-            photos = paginator.page(paginator.num_pages)
+        photos = my_paginator(self, photos_all)
         return photos
 
 
@@ -72,14 +65,7 @@ class Detail_Tag(DetailView):
         photos_all = Photo.objects.filter(
             tags__name__in=[tag.name], is_active=True).order_by(
             '-date_creation')
-        paginator = Paginator(photos_all, 6)
-        page = self.request.GET.get('page')
-        try:
-            photos = paginator.page(page)
-        except PageNotAnInteger:
-            photos = paginator.page(1)
-        except EmptyPage:
-            photos = paginator.page(paginator.num_pages)
+        photos = my_paginator(self, photos_all)
         context['photos'] = photos
         return context
 
